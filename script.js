@@ -16,3 +16,34 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
     target.scrollIntoView({ behavior: "smooth", block: "start" });
   });
 });
+
+const contactModal = document.querySelector("[data-contact-modal]");
+const contactOpen = document.querySelector("[data-contact-open]");
+const contactClose = document.querySelector("[data-contact-close]");
+
+const openContactModal = () => {
+  contactModal?.classList.add("is-open");
+  contactModal?.setAttribute("aria-hidden", "false");
+  document.body.style.overflow = "hidden";
+  contactClose?.focus();
+};
+
+const closeContactModal = () => {
+  contactModal?.classList.remove("is-open");
+  contactModal?.setAttribute("aria-hidden", "true");
+  document.body.style.overflow = "";
+  contactOpen?.focus();
+};
+
+contactOpen?.addEventListener("click", openContactModal);
+contactClose?.addEventListener("click", closeContactModal);
+
+contactModal?.addEventListener("click", (event) => {
+  if (event.target === contactModal) closeContactModal();
+});
+
+document.addEventListener("keydown", (event) => {
+  if (event.key === "Escape" && contactModal?.classList.contains("is-open")) {
+    closeContactModal();
+  }
+});
