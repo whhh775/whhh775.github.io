@@ -1193,7 +1193,7 @@ h3 {
     max(48px, calc((100vw - 1440px) / 2))
     clamp(58px, 6vw, 98px);
   overflow: hidden;
-  background: url("assets/repair-background-reference.png") center / cover no-repeat;
+  background: url("assets/repair-background-reference.png?v=20260707-repair-assets-1") center / cover no-repeat;
   border-top: 1px solid rgba(25, 210, 195, 0.18);
   border-bottom: 1px solid rgba(25, 210, 195, 0.12);
   scroll-margin-top: calc(var(--header-height) + 28px);
@@ -1433,15 +1433,15 @@ h3 {
 }
 
 .pain-card-grid article:nth-child(1) .pain-card-image {
-  --pain-image: url("assets/把车修好-UI小图-1.png");
+  --pain-image: url("assets/把车修好-UI小图-1.png?v=20260707-repair-assets-1");
 }
 
 .pain-card-grid article:nth-child(2) .pain-card-image {
-  --pain-image: url("assets/把车修好-UI小图-2.png");
+  --pain-image: url("assets/把车修好-UI小图-2.png?v=20260707-repair-assets-1");
 }
 
 .pain-card-grid article:nth-child(3) .pain-card-image {
-  --pain-image: url("assets/把车修好-UI小图-3.png");
+  --pain-image: url("assets/把车修好-UI小图-3.png?v=20260707-repair-assets-1");
 }
 
 .case-text-stack {
@@ -1932,7 +1932,7 @@ h3 {
   margin-left: calc(50% - 50vw);
   padding: 0;
   overflow: hidden;
-  background: url("assets/challenge-background.png") top center / 100% auto no-repeat;
+  background: url("assets/challenge-background.png?v=20260707-repair-assets-1") top center / 100% auto no-repeat;
   border-top: 1px solid rgba(25, 210, 195, 0.16);
   border-bottom: 1px solid rgba(244, 241, 234, 0.08);
   scroll-margin-top: calc(var(--header-height) + 28px);
