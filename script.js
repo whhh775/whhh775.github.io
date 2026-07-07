@@ -17,6 +17,17 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+const caseBack = document.querySelector("[data-case-back]");
+
+caseBack?.addEventListener("click", () => {
+  if (document.referrer) {
+    window.history.back();
+    return;
+  }
+
+  window.location.href = "index.html#ui-work";
+});
+
 const contactModal = document.querySelector("[data-contact-modal]");
 const contactOpen = document.querySelector("[data-contact-open]");
 const contactClose = document.querySelector("[data-contact-close]");
