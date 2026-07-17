@@ -1,0 +1,150 @@
+<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>工业交互设计 | 项目详情</title>
+    <meta name="description" content="工业设备控制系统交互设计案例框架，展示现场洞察、任务流、信息架构、关键界面、交互规范与验证结果。">
+    <meta property="og:title" content="工业交互设计 | 项目详情">
+    <meta property="og:description" content="面向多设备协同与高频操作场景的工业 HMI 系统交互设计。">
+    <meta property="og:type" content="website">
+    <link rel="stylesheet" href="styles.css?v=20260715-industrial-case-1">
+  </head>
+  <body class="case-page-body industrial-body">
+    <header class="site-header" data-header>
+      <a class="brand" href="portfolio.html#top" aria-label="返回作品集首页">
+        <span class="brand-mark">V</span><span>你的姓名</span>
+      </a>
+      <nav class="nav" aria-label="工业交互项目导航">
+        <a href="#overview">概览</a><a href="#workflow">流程</a><a href="#screens">界面</a><a href="#validation">验证</a>
+      </nav>
+      <a class="header-cta industrial-header-link" href="portfolio.html#ui-work">全部项目</a>
+    </header>
+
+    <div class="industrial-progress" aria-hidden="true"><span data-case-progress></span></div>
+
+    <nav class="case-breadcrumb-bar industrial-breadcrumb" aria-label="项目路径">
+      <button class="case-back-button" type="button" data-case-back data-case-back-fallback="portfolio.html#ui-work"><span aria-hidden="true">←</span><span>Back</span></button>
+      <ol class="case-breadcrumb"><li><a href="portfolio.html#ui-work">UI 案例项目</a></li><li aria-current="page">工业交互设计</li></ol>
+    </nav>
+
+    <main id="top" class="industrial-case">
+      <section class="industrial-hero" aria-labelledby="industrial-title">
+        <div class="industrial-hero-copy">
+          <p class="industrial-kicker"><span>CASE 04</span> / INDUSTRIAL HMI</p>
+          <h1 id="industrial-title">复杂设备<br><em>简单掌控</em></h1>
+          <p class="industrial-lede">面向多设备协同与高频操作场景，重构任务路径与状态反馈，让操作员在高压力环境下依然能够快速判断、准确执行。</p>
+          <dl class="industrial-meta">
+            <div><dt>项目类型</dt><dd>工业控制系统 / HMI</dd></div>
+            <div><dt>我的角色</dt><dd>交互设计 / UI 设计</dd></div>
+            <div><dt>项目周期</dt><dd>20XX.XX — 20XX.XX</dd></div>
+          </dl>
+        </div>
+        <div class="industrial-hero-stage" aria-label="工业控制台概念界面">
+          <div class="hmi-shell">
+            <div class="hmi-topbar"><span class="hmi-logo">NEXUS / CONTROL</span><span class="hmi-online"><i></i>系统运行正常</span><time>14:32:08</time></div>
+            <div class="hmi-layout">
+              <aside><b>01</b><b>02</b><b class="is-active">03</b><b>04</b><b>05</b></aside>
+              <div class="hmi-main">
+                <div class="hmi-title"><span>设备总览 / LINE A</span><strong>运行监控</strong></div>
+                <div class="hmi-machine"><span class="machine-node node-a">M01<small>运行</small></span><i></i><span class="machine-node node-b">M02<small>运行</small></span><i></i><span class="machine-node node-c">M03<small>待机</small></span></div>
+                <div class="hmi-stats"><span><small>设备效率</small><strong>92.6%</strong></span><span><small>今日产量</small><strong>1,284</strong></span><span class="is-warning"><small>待处理告警</small><strong>03</strong></span></div>
+              </div>
+            </div>
+          </div>
+          <span class="industrial-coordinate coordinate-a">STATUS / 03</span><span class="industrial-coordinate coordinate-b">SYSTEM ONLINE</span>
+        </div>
+        <a class="industrial-scroll" href="#overview">SCROLL TO EXPLORE <span>↓</span></a>
+      </section>
+
+      <section class="industrial-section industrial-overview" id="overview">
+        <div class="industrial-section-head"><p>01 / PROJECT OVERVIEW</p><h2>不是让界面更炫，<br>而是让操作更确定</h2></div>
+        <div class="industrial-overview-grid">
+          <div class="industrial-overview-copy">
+            <p class="industrial-large-copy">传统工业系统信息密度高、任务链路长，操作员需要在多个终端与页面之间频繁切换。项目以核心作业任务为中心，建立统一、清晰、可预期的控制体验。</p>
+            <blockquote>设计目标：降低认知负担，同时保证关键操作的安全性与可追溯性。</blockquote>
+          </div>
+          <div class="industrial-goals">
+            <article><b>01</b><h3>看得清</h3><p>统一设备状态语言，异常信息优先呈现。</p></article>
+            <article><b>02</b><h3>找得快</h3><p>围绕任务组织信息，减少跨页面跳转。</p></article>
+            <article><b>03</b><h3>操作稳</h3><p>关键动作分级确认，建立完整反馈闭环。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="industrial-section industrial-context" id="context">
+        <div class="industrial-section-head"><p>02 / FIELD INSIGHT</p><h2>从真实作业现场<br>理解系统问题</h2></div>
+        <div class="industrial-context-grid">
+          <div class="industrial-photo-placeholder"><span>现场调研图片 / 设备照片</span><b>ASSET PLACEHOLDER · 1200 × 800</b></div>
+          <div class="industrial-pain-list">
+            <article><span>信息问题</span><h3>状态散落，优先级模糊</h3><p>同一设备的运行、维护与告警信息分散在不同页面，紧急状态容易被大量普通信息淹没。</p></article>
+            <article><span>流程问题</span><h3>高频任务路径过长</h3><p>常用操作需要多次跳转与确认，操作员依赖记忆完成任务，新手学习成本高。</p></article>
+            <article><span>安全问题</span><h3>反馈不足，容易误操作</h3><p>危险动作与普通动作视觉权重接近，执行后缺少过程反馈与结果确认。</p></article>
+          </div>
+        </div>
+      </section>
+
+      <section class="industrial-section" id="workflow">
+        <div class="industrial-section-head"><p>03 / TASK WORKFLOW</p><h2>围绕任务重组流程</h2><span>以“发现异常—定位原因—执行处置—确认恢复”为主链路，减少无效跳转。</span></div>
+        <div class="industrial-flow" role="img" aria-label="异常处理任务流程">
+          <article><small>STEP 01</small><b>发现</b><p>分级告警主动触达</p></article><i></i>
+          <article><small>STEP 02</small><b>定位</b><p>关联设备与实时参数</p></article><i></i>
+          <article><small>STEP 03</small><b>处置</b><p>匹配操作建议与权限</p></article><i></i>
+          <article><small>STEP 04</small><b>确认</b><p>恢复状态并生成记录</p></article>
+        </div>
+      </section>
+
+      <section class="industrial-section industrial-architecture">
+        <div class="industrial-section-head"><p>04 / INFORMATION ARCHITECTURE</p><h2>三层信息架构</h2><span>从全局态势进入设备对象，再下钻至具体任务。</span></div>
+        <div class="industrial-architecture-map">
+          <div class="arch-level"><strong>L1 / 全局态势</strong><span>生产总览</span><span>设备地图</span><span>告警中心</span><span>任务中心</span></div>
+          <div class="arch-connector"></div>
+          <div class="arch-level"><strong>L2 / 设备对象</strong><span>实时状态</span><span>运行参数</span><span>维护记录</span><span>关联任务</span></div>
+          <div class="arch-connector"></div>
+          <div class="arch-level"><strong>L3 / 作业任务</strong><span>异常诊断</span><span>远程控制</span><span>巡检维护</span><span>数据分析</span></div>
+        </div>
+      </section>
+
+      <section class="industrial-section industrial-screens" id="screens">
+        <div class="industrial-section-head"><p>05 / KEY INTERFACES</p><h2>关键界面框架</h2><span>以下模块可直接替换为真实 UI 大图、动效视频或交互原型。</span></div>
+        <article class="industrial-screen-feature">
+          <div class="screen-feature-copy"><b>01</b><small>MONITORING CENTER</small><h3>全局监控中心</h3><p>用空间关系呈现设备分布，以状态色与告警队列帮助操作员快速锁定异常对象。</p><ul><li>全局设备状态</li><li>产线关键指标</li><li>异常优先级</li></ul></div>
+          <div class="industrial-screen-placeholder screen-dark"><span>UI 大图 / 监控中心</span><b>1200 × 900</b><div class="placeholder-grid"></div></div>
+        </article>
+        <article class="industrial-screen-feature is-reverse">
+          <div class="screen-feature-copy"><b>02</b><small>DEVICE DETAIL</small><h3>设备控制台</h3><p>将实时参数、运行趋势与控制动作置于同一工作区，保证判断与执行上下文连续。</p><ul><li>参数实时反馈</li><li>操作权限分级</li><li>过程状态可见</li></ul></div>
+          <div class="industrial-screen-placeholder screen-light"><span>UI 大图 / 设备控制台</span><b>1200 × 900</b><div class="placeholder-grid"></div></div>
+        </article>
+        <div class="industrial-small-screens"><div><span>告警诊断</span><b>UI 小图 · 1200 × 800</b></div><div><span>工单处理</span><b>UI 小图 · 1200 × 800</b></div><div><span>移动巡检</span><b>UI 小图 · 1200 × 800</b></div></div>
+      </section>
+
+      <section class="industrial-section industrial-rules">
+        <div class="industrial-section-head"><p>06 / INTERACTION RULES</p><h2>高风险场景的<br>交互原则</h2></div>
+        <div class="industrial-rule-grid">
+          <article><div class="rule-demo rule-status"><i></i><i></i><i></i></div><small>01 / STATUS</small><h3>状态不只依赖颜色</h3><p>颜色、图标、文字三重编码，适配复杂光线与色觉差异。</p></article>
+          <article><div class="rule-demo rule-confirm"><span>确认停机</span><button type="button" tabindex="-1">长按 2 秒执行</button></div><small>02 / SAFETY</small><h3>危险操作分级确认</h3><p>根据风险等级匹配确认方式，避免惯性点击造成误操作。</p></article>
+          <article><div class="rule-demo rule-feedback"><span></span><b>指令执行中 64%</b></div><small>03 / FEEDBACK</small><h3>过程与结果持续可见</h3><p>长任务展示实时进度，并对成功、失败与恢复给出明确反馈。</p></article>
+        </div>
+      </section>
+
+      <section class="industrial-section industrial-validation" id="validation">
+        <div class="industrial-section-head"><p>07 / VALIDATION</p><h2>用任务验证设计</h2><span>此处替换为真实可用性测试数据或上线后的业务指标。</span></div>
+        <div class="industrial-results">
+          <article><strong>−XX%</strong><span>关键任务耗时</span><small>对比旧版系统</small></article>
+          <article><strong>−XX%</strong><span>平均操作步骤</span><small>核心高频任务</small></article>
+          <article><strong>+XX%</strong><span>异常定位效率</span><small>可用性测试结果</small></article>
+        </div>
+        <div class="industrial-test-note"><span>验证方法</span><p>选择不同熟练度的一线操作员，通过典型任务测试记录完成时间、错误次数与主观负荷，再根据问题优先级持续迭代。</p></div>
+      </section>
+
+      <section class="industrial-summary">
+        <p>08 / SUMMARY</p><h2>把复杂留给系统，<br><em>把确定性交给人。</em></h2>
+        <div><p>这套框架关注的不只是单个界面的视觉表现，而是工业场景中的信息秩序、任务效率与操作安全。后续可基于真实项目素材继续补充研究证据、方案推演和最终成果。</p><a href="portfolio.html#ui-work">查看其他 UI 项目 <span>↗</span></a></div>
+      </section>
+    </main>
+
+    <footer class="site-footer industrial-footer"><p>© 2026 你的姓名. Portfolio case study.</p><a href="portfolio.html#ui-work">返回 UI 项目</a></footer>
+    <a class="case-floating-top" href="#top" aria-label="返回顶部"><span class="case-floating-top-icon" aria-hidden="true"></span></a>
+    <script src="script.js?v=20260715-industrial-case-1"></script>
+  </body>
+</html>

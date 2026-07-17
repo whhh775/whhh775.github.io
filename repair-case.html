@@ -15,23 +15,25 @@
     >
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/repair-case/repair-case-cover.png?v=20260707-repair-assets-1">
-    <link rel="stylesheet" href="styles.css?v=20260707-repair-assets-1">
+    <link rel="stylesheet" href="styles.css?v=20260715-repair-reading-progress-1">
   </head>
   <body class="case-page-body">
     <div class="starfield-bg" aria-hidden="true"></div>
     <header class="site-header" data-header>
-      <a class="brand" href="index.html#top" aria-label="返回首页">
+      <a class="brand" href="portfolio.html#top" aria-label="返回首页">
         <span class="brand-mark">V</span>
         <span>你的姓名</span>
       </a>
       <nav class="nav" aria-label="项目详情导航">
-        <a href="index.html#ui-work">UI 项目</a>
+        <a href="portfolio.html#ui-work">UI 项目</a>
         <a href="#case-background">背景</a>
         <a href="#case-screens">界面</a>
         <a href="#case-summary">总结</a>
       </nav>
-      <a class="header-cta" href="index.html#contact">联系我</a>
+      <button class="header-cta" type="button" data-contact-open>联系我</button>
     </header>
+
+    <div class="repair-progress" aria-hidden="true"><span data-case-progress></span></div>
 
     <main id="top" class="case-page">
       <section class="case-hero-detail" aria-labelledby="case-title">
@@ -41,8 +43,8 @@
             <span>Back</span>
           </button>
           <ol class="case-breadcrumb">
-            <li><a href="index.html#ui-work">UI 案例项目</a></li>
-            <li><a href="index.html#product-design-case">产品设计</a></li>
+            <li><a href="portfolio.html#ui-work">UI 案例项目</a></li>
+            <li><a href="portfolio.html#product-design-case">产品设计</a></li>
             <li aria-current="page">把车修好</li>
           </ol>
         </nav>
@@ -286,20 +288,46 @@
         <img src="assets/repair-case/ui-showcase.png?v=20260707-repair-assets-1" width="1920" height="2550" alt="核心界面展示">
       </section>
 
-      <section class="results-summary-section" id="case-summary" aria-label="成果表达与总结">
-        <img src="assets/repair-case/repair-results-summary.png?v=20260707-repair-assets-1" width="1920" height="1939" alt="成果表达与总结">
+      <section class="results-summary-section repair-results-section" aria-label="成果表达">
+        <img src="assets/repair-case/repair-results.png?v=20260714-results-summary-split-1" width="1920" height="951" alt="成果表达">
+      </section>
+
+      <section class="results-summary-section repair-summary-section" id="case-summary" aria-label="总结">
+        <img src="assets/repair-case/repair-summary.png?v=20260714-results-summary-split-1" width="1920" height="988" alt="总结">
       </section>
     </main>
 
     <footer class="site-footer">
       <p>© 2026 你的姓名. Portfolio case study.</p>
-      <a href="index.html#ui-work">返回 UI 项目</a>
+      <a href="portfolio.html#ui-work">返回 UI 项目</a>
     </footer>
 
     <a class="case-floating-top" href="#top" aria-label="返回顶部">
       <span class="case-floating-top-icon" aria-hidden="true"></span>
     </a>
 
-    <script src="script.js"></script>
+    <div class="contact-modal" data-contact-modal aria-hidden="true">
+      <div class="contact-modal__panel" role="dialog" aria-modal="true" aria-labelledby="contact-modal-title">
+        <button class="contact-modal__close" type="button" data-contact-close aria-label="关闭联系方式">×</button>
+        <p class="eyebrow">Contact</p>
+        <h2 id="contact-modal-title">我的联系方式</h2>
+        <dl class="contact-modal__list">
+          <div>
+            <dt>联系电话</dt>
+            <dd><a href="tel:13667323149">13667323149</a></dd>
+          </div>
+          <div>
+            <dt>电子邮箱</dt>
+            <dd><a href="mailto:13667323149@163.com">13667323149@163.com</a></dd>
+          </div>
+          <div>
+            <dt>现居住地</dt>
+            <dd>长沙</dd>
+          </div>
+        </dl>
+      </div>
+    </div>
+
+    <script src="script.js?v=20260715-contact-modal-1"></script>
   </body>
 </html>
