@@ -34,6 +34,14 @@ const loadLazyVideo = (video) => {
 
 const lazyVideos = document.querySelectorAll("[data-lazy-video]");
 if (lazyVideos.length) {
+  window.addEventListener("load", () => {
+    lazyVideos.forEach((video) => {
+      const rect = video.getBoundingClientRect();
+      const nearViewport = rect.top < window.innerHeight + 160 && rect.bottom > -160;
+      if (nearViewport) loadLazyVideo(video);
+    });
+  }, { once: true });
+
   if ("IntersectionObserver" in window) {
     const videoObserver = new IntersectionObserver((entries) => {
       entries.forEach((entry) => {
