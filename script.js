@@ -14,6 +14,11 @@ const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 const loadLazyVideo = (video) => {
   if (!video || video.dataset.videoLoaded === "true") return;
 
+  if (video.dataset.src) {
+    video.src = video.dataset.src;
+    video.removeAttribute("data-src");
+  }
+
   video.querySelectorAll("source[data-src]").forEach((source) => {
     source.src = source.dataset.src;
     source.removeAttribute("data-src");
