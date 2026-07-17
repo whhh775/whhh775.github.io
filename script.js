@@ -11,6 +11,44 @@ window.addEventListener("scroll", setHeaderState, { passive: true });
 const homeMain = document.querySelector(".hero-showcase")?.closest("main");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
+const loadLazyVideo = (video) => {
+  if (!video || video.dataset.videoLoaded === "true") return;
+
+  video.querySelectorAll("source[data-src]").forEach((source) => {
+    source.src = source.dataset.src;
+    source.removeAttribute("data-src");
+  });
+
+  if (!video.getAttribute("src")) {
+    const source = video.querySelector("source[src]");
+    if (!source) return;
+  }
+
+  video.dataset.videoLoaded = "true";
+  video.load();
+
+  if (video.autoplay && !reduceMotion.matches) {
+    video.play().catch(() => {});
+  }
+};
+
+const lazyVideos = document.querySelectorAll("[data-lazy-video]");
+if (lazyVideos.length) {
+  if ("IntersectionObserver" in window) {
+    const videoObserver = new IntersectionObserver((entries) => {
+      entries.forEach((entry) => {
+        if (!entry.isIntersecting) return;
+        loadLazyVideo(entry.target);
+        videoObserver.unobserve(entry.target);
+      });
+    }, { rootMargin: "360px 0px", threshold: 0.01 });
+
+    lazyVideos.forEach((video) => videoObserver.observe(video));
+  } else {
+    lazyVideos.forEach(loadLazyVideo);
+  }
+}
+
 if (homeMain && "IntersectionObserver" in window && !reduceMotion.matches) {
   const revealSequences = [
     { trigger: ".category-section", titles: [".category-topline", ".category-heading"], cards: [".signal-band .category-card", ".category-footer"] },
