@@ -4592,6 +4592,7 @@ h3 {
 .brand-case-body .site-header::before { background: rgba(8, 10, 12, 0.88); }
 .brand-case-body .nav a { color: rgba(255, 255, 255, 0.7); }
 .brand-case-body .nav a:hover { color: #fff; }
+.brand-case-body .contact-modal { z-index: 120; }
 
 .brand-progress {
   position: fixed;
@@ -4610,15 +4611,7 @@ h3 {
   transform-origin: left;
 }
 
-.brand-breadcrumb {
-  color: rgba(255, 255, 255, 0.58);
-  border-color: rgba(255, 255, 255, 0.1);
-  background: rgba(8, 10, 12, 0.7);
-  backdrop-filter: blur(18px);
-}
-
-.brand-breadcrumb a,
-.brand-breadcrumb button { color: inherit; }
+.brand-breadcrumb .case-breadcrumb [aria-current="page"] { color: var(--brand-orange); }
 
 .brand-case { overflow: hidden; background: var(--brand-ink); }
 .brand-case h1,
