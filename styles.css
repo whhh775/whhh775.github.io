@@ -2455,6 +2455,12 @@ h3 {
 
 .shoumi-hero .case-breadcrumb a {
   color: rgba(32, 36, 42, 0.54);
+  transition: color 0.2s ease;
+}
+
+.shoumi-hero .case-breadcrumb a:hover,
+.shoumi-hero .case-breadcrumb a:focus-visible {
+  color: #ff5b22;
 }
 
 .shoumi-hero .case-breadcrumb li[aria-current="page"] {
@@ -4573,8 +4579,33 @@ h3 {
 
 /* Dinglead brand visual case */
 .graphic-card-link {
+  position: relative;
+  display: block;
   color: inherit;
   text-decoration: none;
+  cursor: pointer;
+  transition:
+    border-color 220ms ease,
+    box-shadow 260ms ease,
+    background-color 220ms ease,
+    transform 260ms cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.graphic-grid .graphic-card-link:hover,
+.graphic-grid .graphic-card-link:focus-visible {
+  color: inherit;
+  background: #151519;
+  border-color: rgba(25, 210, 195, 0.5);
+  box-shadow:
+    0 30px 76px rgba(0, 0, 0, 0.5),
+    0 0 0 1px rgba(25, 210, 195, 0.14),
+    0 0 32px rgba(25, 210, 195, 0.12);
+  transform: translate3d(0, -8px, 0) scale(1.012);
+}
+
+.graphic-grid .graphic-card-link:focus-visible {
+  outline: 2px solid var(--teal);
+  outline-offset: 4px;
 }
 
 .brand-case-body {
