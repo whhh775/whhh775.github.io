@@ -131,11 +131,90 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
+const caseDetailPattern = /(?:repair-case|shoumi-case|visualization-case|industrial-case|brand-case)\.html/i;
+
+const getCaseReturnUrl = (link) => {
+  const source = link.closest("[id]") || document.querySelector("main[id]");
+  const url = new URL(window.location.href);
+
+  if (source?.id) url.hash = source.id;
+  return url.href;
+};
+
+document.querySelectorAll("a[href]").forEach((link) => {
+  link.addEventListener("click", (event) => {
+    if (event.defaultPrevented || event.button !== 0 || event.metaKey || event.ctrlKey || event.shiftKey || event.altKey) return;
+
+    const rawHref = link.getAttribute("href");
+    if (!rawHref || !caseDetailPattern.test(rawHref)) return;
+
+    const targetUrl = new URL(rawHref, window.location.href);
+    const sameFileOrigin = targetUrl.protocol === "file:" && window.location.protocol === "file:";
+    if (targetUrl.origin !== window.location.origin && !sameFileOrigin) return;
+
+    const returnUrl = getCaseReturnUrl(link);
+    window.sessionStorage.setItem(`case-return-url:${targetUrl.pathname}`, returnUrl);
+    targetUrl.searchParams.set("from", returnUrl);
+    targetUrl.searchParams.set("fromY", String(Math.round(window.scrollY)));
+    link.href = targetUrl.href;
+  });
+});
+
+const restoreCaseReturnScroll = () => {
+  const saved = window.sessionStorage.getItem("case-return-scroll");
+  if (!saved) return;
+
+  try {
+    const { url, y } = JSON.parse(saved);
+    if (url && new URL(url, window.location.href).pathname !== window.location.pathname) return;
+
+    window.sessionStorage.removeItem("case-return-scroll");
+    const top = Number(y) || 0;
+    const restore = () => window.scrollTo({ top, behavior: "auto" });
+
+    restore();
+    window.requestAnimationFrame(restore);
+    window.setTimeout(restore, 180);
+    window.setTimeout(restore, 600);
+  } catch {
+    window.sessionStorage.removeItem("case-return-scroll");
+  }
+};
+
+restoreCaseReturnScroll();
+
 const caseBack = document.querySelector("[data-case-back]");
 
 caseBack?.addEventListener("click", () => {
   const fallback = caseBack.dataset.caseBackFallback || "portfolio.html#ui-work";
-  const hasPreviousPage = window.history.length > 1 && document.referrer;
+  const params = new URLSearchParams(window.location.search);
+  const returnTo =
+    params.get("from") ||
+    window.sessionStorage.getItem(`case-return-url:${window.location.pathname}`);
+  const returnY = params.get("fromY");
+
+  if (returnTo) {
+    if (returnY !== null) {
+      window.sessionStorage.setItem("case-return-scroll", JSON.stringify({ url: returnTo, y: returnY }));
+    }
+    window.location.replace(returnTo);
+    return;
+  }
+
+  if (document.referrer) {
+    const referrerUrl = new URL(document.referrer);
+    const currentUrl = new URL(window.location.href);
+    const canUseReferrer =
+      referrerUrl.origin === currentUrl.origin &&
+      referrerUrl.pathname !== currentUrl.pathname;
+
+    if (canUseReferrer) {
+      window.location.href = referrerUrl.href;
+      return;
+    }
+  }
+
+  const hasPreviousPage = window.history.length > 1;
 
   if (hasPreviousPage) {
     const currentUrl = window.location.href;

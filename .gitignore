@@ -4,3 +4,6 @@ plugins/
 website-upload-*.zip
 website-latest-*.zip
 asset-originals-before-webp-*.zip
+video-originals-before-optimization-*.zip
+video-optimized-tmp/
+video-frame-check/
