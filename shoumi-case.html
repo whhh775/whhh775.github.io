@@ -15,7 +15,7 @@
     >
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/shoumi-case/shoumi-cover.webp">
-    <link rel="stylesheet" href="styles.css?v=20260720-shoumi-breadcrumb-hover-1">
+    <link rel="stylesheet" href="styles.css?v=20260723-shoumi-split-pages-1">
   </head>
   <body class="case-page-body shoumi-case-body">
     <div class="starfield-bg" aria-hidden="true"></div>
@@ -23,10 +23,10 @@
       <a class="brand portal-logo" href="portfolio.html#top" aria-label="返回作品集首页">
         <img class="portal-logo-image" src="assets/common/website-logo.svg" alt="" decoding="async">
       </a>
-      <nav class="nav" aria-label="收米多多项目导航">
+      <nav class="nav shoumi-category-tabs" aria-label="收米多多分类导航">
         <a href="portfolio.html#ui-work">UI 项目</a>
-        <a href="#case-overview">概览</a>
-        <a href="#core-pages">核心页面</a>
+        <a class="is-active" href="shoumi-case.html">APP 端</a>
+        <a href="shoumi-backend.html">Web 后端</a>
       </nav>
       <button class="header-cta" type="button" data-contact-open>联系我</button>
     </header>
@@ -34,7 +34,7 @@
     <div class="shoumi-progress" aria-hidden="true"><span data-case-progress></span></div>
 
     <main id="top" class="case-page shoumi-case">
-      <section class="case-hero-detail shoumi-hero" aria-labelledby="case-title">
+      <section class="case-hero-detail shoumi-hero" id="app-design" aria-labelledby="case-title">
         <nav class="case-breadcrumb-bar" aria-label="项目路径">
           <button class="case-back-button" type="button" data-case-back aria-label="返回上一页">
             <span aria-hidden="true">←</span>
@@ -123,6 +123,6 @@
       </div>
     </div>
 
-    <script src="script.js?v=20260720-history-back-6"></script>
+    <script src="script.js?v=20260723-shoumi-split-pages-1"></script>
   </body>
 </html>

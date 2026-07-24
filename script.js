@@ -131,7 +131,7 @@ document.querySelectorAll('a[href^="#"]').forEach((link) => {
   });
 });
 
-const caseDetailPattern = /(?:repair-case|shoumi-case|visualization-case|industrial-case|brand-case)\.html/i;
+const caseDetailPattern = /(?:repair-case|shoumi-case|shoumi-backend|visualization-case|industrial-case|brand-case|visual-communication-case|ppt-info-design-case)\.html/i;
 
 const getCaseReturnUrl = (link) => {
   const source = link.closest("[id]") || document.querySelector("main[id]");
@@ -187,6 +187,12 @@ const caseBack = document.querySelector("[data-case-back]");
 
 caseBack?.addEventListener("click", () => {
   const fallback = caseBack.dataset.caseBackFallback || "portfolio.html#ui-work";
+
+  if (caseBack.hasAttribute("data-case-back-static")) {
+    window.location.href = fallback;
+    return;
+  }
+
   const params = new URLSearchParams(window.location.search);
   const returnTo =
     params.get("from") ||

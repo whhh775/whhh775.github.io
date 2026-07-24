@@ -96,3 +96,18 @@ assets/
 
 - `assets/common/portfolio-hero.webp` 当前未直接引用，可确认是否继续保留。
 - `shoumi-case.html` 页面文字存在编码异常，建议后续单独修复编码和文案。
+
+## 8. `assets/ppt-info-design/` PPT 与信息设计详情页素材
+
+| 文件名 | 建议尺寸 | 用途 |
+| --- | --- | --- |
+| `ppt-info-design-01.webp` | 1920 x 1280 | Hero 首屏 |
+| `ppt-info-design-02.webp` | 1920 x 1280 | 项目背景与设计任务 |
+| `ppt-info-design-03.webp` | 1920 x 1280 | 整体信息架构 |
+| `ppt-info-design-04.webp` | 1920 x 1280 | 企业介绍 PPT 精选 |
+| `ppt-info-design-05.webp` | 1920 x 1280 | 视觉与信息规范 |
+| `ppt-info-design-06.webp` | 1920 x 1280 | 行业解决方案体系 |
+| `ppt-info-design-07.webp` | 1920 x 1280 | 三个行业的差异化适配 |
+| `ppt-info-design-08.webp` | 1920 x 1280 | 精选页面展示 |
+| `ppt-info-design-09.webp` | 1920 x 1600 | 更多精选页面展示 |
+| `ppt-info-design-10.webp` | 1920 x 1280 | 项目总结 |
