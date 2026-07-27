@@ -15,7 +15,7 @@
     >
     <meta property="og:type" content="website">
     <meta property="og:image" content="assets/home/首页首屏.webp">
-    <link rel="stylesheet" href="styles.css?v=20260723-graphic-three-cards-1">
+    <link rel="stylesheet" href="styles.css?v=20260727-lake-hero-1">
   </head>
   <body>
     <div class="starfield-bg" aria-hidden="true"></div>
@@ -36,10 +36,33 @@
     <div class="home-progress" aria-hidden="true"><span data-case-progress></span></div>
 
     <main id="top">
-      <section class="hero section hero-showcase" aria-label="首页主视觉">
-        <video autoplay muted loop playsinline preload="none" poster="assets/home/首页首屏.webp" aria-label="个人作品集首页动效主视觉" data-lazy-video>
-          <source data-src="assets/home/hero-motion.mp4?v=20260630-7" type="video/mp4">
-        </video>
+      <section class="hero section hero-showcase lake-hero" aria-label="首页主视觉">
+        <img src="assets/home/portfolio-lake-hero.webp" alt="晨雾湖面中的个人设计空间" decoding="async" fetchpriority="high">
+        <div class="lake-hero-overlay" aria-hidden="true"></div>
+        <div class="lake-guide-layer" aria-label="首页板块快速跳转">
+          <a class="lake-guide" href="#ui-work" style="--x: 10%; --y: 38%; --line: 120px;">
+            <span>UI Projects</span>
+          </a>
+          <a class="lake-guide" href="#graphic-work" style="--x: 27%; --y: 49%; --line: 96px;">
+            <span>Graphic Works</span>
+          </a>
+          <a class="lake-guide" href="#about" style="--x: 49%; --y: 35%; --line: 118px;">
+            <span>About</span>
+          </a>
+          <a class="lake-guide" href="#resume" style="--x: 70%; --y: 49%; --line: 104px;">
+            <span>Resume</span>
+          </a>
+          <a class="lake-guide" href="#contact" style="--x: 86%; --y: 36%; --line: 132px;">
+            <span>Contact</span>
+          </a>
+        </div>
+        <div class="lake-hero-copy">
+          <p>Personal Design Space</p>
+          <h1>探索复杂世界的<br>设计语言</h1>
+        </div>
+        <p class="lake-hero-note">
+          从界面项目、平面视觉到设计复盘，进入完整的个人设计空间。
+        </p>
       </section>
 
       <section class="section category-section" aria-label="作品分类入口">
