@@ -324,20 +324,17 @@ main,
 }
 
 .lake-hero-video {
-  opacity: 0;
-  transition: opacity 900ms ease;
-}
-
-.lake-hero-video.is-active {
   opacity: 1;
+  transition: opacity 1100ms ease;
 }
 
-.lake-hero-video.is-seamless-shadow {
+.lake-hero-video.is-dissolve-ghost {
   z-index: 0;
   opacity: 0;
+  filter: saturate(0.9) contrast(1.02) brightness(0.86);
 }
 
-.lake-hero-video.is-seamless-shadow.is-active {
+.lake-hero-video.is-dissolve-ghost.is-visible {
   opacity: 1;
 }
 

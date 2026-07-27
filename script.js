@@ -7,7 +7,7 @@ const setHeaderState = () => {
 setHeaderState();
 window.addEventListener("scroll", setHeaderState, { passive: true });
 
-// 首页按模块触发：标题先淡入，卡片随后依次上移出现。
+// Homepage module reveal: titles fade in first, then cards rise in sequence.
 const homeMain = document.querySelector(".hero-showcase")?.closest("main");
 const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)");
 
@@ -62,80 +62,63 @@ if (lazyVideos.length) {
   }
 }
 
-const seamlessHeroVideo = document.querySelector("[data-seamless-hero-video]");
-if (seamlessHeroVideo && !reduceMotion.matches) {
-  const crossfadeSeconds = 0.9;
-  const crossfadeMs = crossfadeSeconds * 1000;
-  const shadowVideo = seamlessHeroVideo.cloneNode(true);
-  let activeVideo = seamlessHeroVideo;
-  let standbyVideo = shadowVideo;
-  let isSwitchingHeroVideo = false;
+const heroVideo = document.querySelector("[data-hero-video]");
+if (heroVideo && !reduceMotion.matches) {
+  const dissolveSeconds = 1.1;
+  const dissolveMs = dissolveSeconds * 1000;
+  const heroGhostVideo = heroVideo.cloneNode(true);
+  let isHeroVideoDissolving = false;
+  let heroLoopTimer;
 
-  seamlessHeroVideo.loop = false;
-  shadowVideo.loop = false;
-  shadowVideo.autoplay = false;
-  shadowVideo.removeAttribute("autoplay");
-  shadowVideo.removeAttribute("data-seamless-hero-video");
-  shadowVideo.setAttribute("aria-hidden", "true");
-  shadowVideo.removeAttribute("aria-label");
-  shadowVideo.classList.remove("is-active", "is-fading-out");
-  shadowVideo.classList.add("is-seamless-shadow");
-  seamlessHeroVideo.after(shadowVideo);
+  heroGhostVideo.removeAttribute("data-hero-video");
+  heroGhostVideo.removeAttribute("aria-label");
+  heroGhostVideo.setAttribute("aria-hidden", "true");
+  heroGhostVideo.autoplay = false;
+  heroGhostVideo.loop = false;
+  heroGhostVideo.classList.add("is-dissolve-ghost");
+  heroVideo.after(heroGhostVideo);
 
-  const playHeroVideo = (video) => {
-    const playPromise = video.play();
-    if (playPromise?.catch) playPromise.catch(() => {});
+  const setHeroVideoPace = () => {
+    heroVideo.playbackRate = 1;
+    heroVideo.loop = false;
+    heroGhostVideo.loop = false;
+    heroGhostVideo.load();
+    heroGhostVideo.pause();
+    heroVideo.play().catch(() => {});
   };
 
-  const resetStandbyVideo = () => {
-    standbyVideo.pause();
-    standbyVideo.currentTime = 0;
-    standbyVideo.classList.remove("is-active", "is-fading-out");
-  };
-
-  const switchHeroVideo = () => {
-    if (isSwitchingHeroVideo) return;
-    isSwitchingHeroVideo = true;
-
-    standbyVideo.currentTime = 0;
-    standbyVideo.classList.add("is-active");
-    activeVideo.classList.remove("is-active");
-    playHeroVideo(standbyVideo);
-
-    window.setTimeout(() => {
-      activeVideo.pause();
-      activeVideo.currentTime = 0;
-      activeVideo.classList.remove("is-active", "is-fading-out");
-
-      const previousActive = activeVideo;
-      activeVideo = standbyVideo;
-      standbyVideo = previousActive;
-      resetStandbyVideo();
-      isSwitchingHeroVideo = false;
-    }, crossfadeMs);
-  };
-
-  const watchHeroVideoLoop = () => {
-    if (!Number.isFinite(activeVideo.duration) || activeVideo.duration <= crossfadeSeconds + 0.2) return;
-    if (activeVideo.currentTime >= activeVideo.duration - crossfadeSeconds) {
-      switchHeroVideo();
-    }
-  };
-
-  const prepareHeroVideoLoop = () => {
-    shadowVideo.load();
-    shadowVideo.pause();
-    shadowVideo.currentTime = 0;
-    playHeroVideo(seamlessHeroVideo);
-  };
-
-  if (seamlessHeroVideo.readyState >= 1) {
-    prepareHeroVideoLoop();
+  if (heroVideo.readyState >= 1) {
+    setHeroVideoPace();
   } else {
-    seamlessHeroVideo.addEventListener("loadedmetadata", prepareHeroVideoLoop, { once: true });
+    heroVideo.addEventListener("loadedmetadata", setHeroVideoPace, { once: true });
   }
 
-  window.setInterval(watchHeroVideoLoop, 120);
+  heroLoopTimer = window.setInterval(() => {
+    if (!Number.isFinite(heroVideo.duration) || heroVideo.duration <= dissolveSeconds + 0.4 || isHeroVideoDissolving) return;
+
+    if (heroVideo.currentTime >= heroVideo.duration - dissolveSeconds) {
+      isHeroVideoDissolving = true;
+      heroGhostVideo.currentTime = 0.04;
+      heroGhostVideo.play().catch(() => {});
+      window.requestAnimationFrame(() => {
+        heroGhostVideo.classList.add("is-visible");
+      });
+
+      window.setTimeout(() => {
+        heroVideo.currentTime = Math.max(0.04, heroGhostVideo.currentTime);
+        heroVideo.play().catch(() => {});
+        heroGhostVideo.classList.remove("is-visible");
+
+        window.setTimeout(() => {
+          heroGhostVideo.pause();
+          heroGhostVideo.currentTime = 0;
+          isHeroVideoDissolving = false;
+        }, dissolveMs);
+      }, dissolveMs);
+    }
+  }, 45);
+
+  window.addEventListener("pagehide", () => window.clearInterval(heroLoopTimer), { once: true });
 }
 
 if (homeMain && "IntersectionObserver" in window && !reduceMotion.matches) {
