@@ -62,6 +62,82 @@ if (lazyVideos.length) {
   }
 }
 
+const seamlessHeroVideo = document.querySelector("[data-seamless-hero-video]");
+if (seamlessHeroVideo && !reduceMotion.matches) {
+  const crossfadeSeconds = 0.9;
+  const crossfadeMs = crossfadeSeconds * 1000;
+  const shadowVideo = seamlessHeroVideo.cloneNode(true);
+  let activeVideo = seamlessHeroVideo;
+  let standbyVideo = shadowVideo;
+  let isSwitchingHeroVideo = false;
+
+  seamlessHeroVideo.loop = false;
+  shadowVideo.loop = false;
+  shadowVideo.autoplay = false;
+  shadowVideo.removeAttribute("autoplay");
+  shadowVideo.removeAttribute("data-seamless-hero-video");
+  shadowVideo.setAttribute("aria-hidden", "true");
+  shadowVideo.removeAttribute("aria-label");
+  shadowVideo.classList.remove("is-active", "is-fading-out");
+  shadowVideo.classList.add("is-seamless-shadow");
+  seamlessHeroVideo.after(shadowVideo);
+
+  const playHeroVideo = (video) => {
+    const playPromise = video.play();
+    if (playPromise?.catch) playPromise.catch(() => {});
+  };
+
+  const resetStandbyVideo = () => {
+    standbyVideo.pause();
+    standbyVideo.currentTime = 0;
+    standbyVideo.classList.remove("is-active", "is-fading-out");
+  };
+
+  const switchHeroVideo = () => {
+    if (isSwitchingHeroVideo) return;
+    isSwitchingHeroVideo = true;
+
+    standbyVideo.currentTime = 0;
+    standbyVideo.classList.add("is-active");
+    activeVideo.classList.remove("is-active");
+    playHeroVideo(standbyVideo);
+
+    window.setTimeout(() => {
+      activeVideo.pause();
+      activeVideo.currentTime = 0;
+      activeVideo.classList.remove("is-active", "is-fading-out");
+
+      const previousActive = activeVideo;
+      activeVideo = standbyVideo;
+      standbyVideo = previousActive;
+      resetStandbyVideo();
+      isSwitchingHeroVideo = false;
+    }, crossfadeMs);
+  };
+
+  const watchHeroVideoLoop = () => {
+    if (!Number.isFinite(activeVideo.duration) || activeVideo.duration <= crossfadeSeconds + 0.2) return;
+    if (activeVideo.currentTime >= activeVideo.duration - crossfadeSeconds) {
+      switchHeroVideo();
+    }
+  };
+
+  const prepareHeroVideoLoop = () => {
+    shadowVideo.load();
+    shadowVideo.pause();
+    shadowVideo.currentTime = 0;
+    playHeroVideo(seamlessHeroVideo);
+  };
+
+  if (seamlessHeroVideo.readyState >= 1) {
+    prepareHeroVideoLoop();
+  } else {
+    seamlessHeroVideo.addEventListener("loadedmetadata", prepareHeroVideoLoop, { once: true });
+  }
+
+  window.setInterval(watchHeroVideoLoop, 120);
+}
+
 if (homeMain && "IntersectionObserver" in window && !reduceMotion.matches) {
   const revealSequences = [
     { trigger: ".category-section", titles: [".category-topline", ".category-heading"], cards: [".signal-band .category-card", ".category-footer"] },

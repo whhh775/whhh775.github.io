@@ -316,10 +316,29 @@ main,
   background: #071018;
 }
 
-.lake-hero img {
+.lake-hero img,
+.lake-hero video {
   position: relative;
   z-index: 0;
   filter: saturate(0.92) contrast(1.04) brightness(0.92);
+}
+
+.lake-hero-video {
+  opacity: 0;
+  transition: opacity 900ms ease;
+}
+
+.lake-hero-video.is-active {
+  opacity: 1;
+}
+
+.lake-hero-video.is-seamless-shadow {
+  z-index: 0;
+  opacity: 0;
+}
+
+.lake-hero-video.is-seamless-shadow.is-active {
+  opacity: 1;
 }
 
 .lake-hero-overlay {
@@ -4255,7 +4274,8 @@ h3 {
     opacity: 0.16;
   }
 
-  .lake-hero img {
+  .lake-hero img,
+  .lake-hero video {
     object-position: center center;
   }
 
