@@ -102,12 +102,9 @@ assets/
 | 文件名 | 建议尺寸 | 用途 |
 | --- | --- | --- |
 | `ppt-info-design-01.webp` | 1920 x 1280 | Hero 首屏 |
-| `ppt-info-design-02.webp` | 1920 x 1280 | 项目背景与设计任务 |
-| `ppt-info-design-03.webp` | 1920 x 1280 | 整体信息架构 |
-| `ppt-info-design-04.webp` | 1920 x 1280 | 企业介绍 PPT 精选 |
-| `ppt-info-design-05.webp` | 1920 x 1280 | 视觉与信息规范 |
-| `ppt-info-design-06.webp` | 1920 x 1280 | 行业解决方案体系 |
-| `ppt-info-design-07.webp` | 1920 x 1280 | 三个行业的差异化适配 |
-| `ppt-info-design-08.webp` | 1920 x 1280 | 精选页面展示 |
-| `ppt-info-design-09.webp` | 1920 x 1600 | 更多精选页面展示 |
-| `ppt-info-design-10.webp` | 1920 x 1280 | 项目总结 |
+| `ppt-info-design-02.webp` | 1920 x 1156 | 项目概览 |
+| `ppt-info-design-03.webp` | 1920 x 1537 | 企业介绍 PPT |
+| `ppt-info-design-04.webp` | 1920 x 2250 | 工程机械智能控制解决方案 |
+| `ppt-info-design-05.webp` | 1920 x 2033 | 矿山设备智能控制解决方案 |
+| `ppt-info-design-06.webp` | 1920 x 1840 | 农机设备智能控制解决方案 |
+| `ppt-info-design-07.webp` | 1920 x 1480 | 项目总结 |

@@ -4932,16 +4932,17 @@ h3 {
   position: relative;
   width: 100%;
   margin: 0 0 20px;
-  overflow: hidden;
-  aspect-ratio: 3 / 2;
+  overflow: visible;
+  min-height: 0;
   line-height: 0;
   background: var(--ppt-panel);
   scroll-margin-top: calc(var(--header-height) + 24px);
 }
 
-.ppt-info-module.ppt-info-tall { aspect-ratio: 6 / 5; }
-.ppt-info-module > img { position: relative; z-index: 1; display: block; width: 100%; height: auto; }
+.ppt-info-module > img { position: relative; z-index: 1; display: block; width: 100%; height: auto; min-height: 0; }
 .ppt-info-module > img[hidden] { display: none; }
+.ppt-info-module > img[hidden] + .ppt-info-placeholder,
+.ppt-info-module:has(> img[hidden]) { min-height: min(66.67vw, 960px); }
 
 .ppt-info-placeholder {
   position: absolute;
